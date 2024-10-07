@@ -1,0 +1,78 @@
+*{font-family: 'Montserrat', sans-serif;}
+h2  {  color:#ff0000; }
+
+.xpto{ 
+   width: 300px;
+   height: 300px;
+   background: #ff0000 url("../images/bot_off.png") no-repeat center center;
+   cursor:pointer;
+   /*display: none;*/ 
+} 
+
+.xpto:hover{
+    background: #0f0 url("../images/bot_on.png") no-repeat center center
+
+
+}
+    .xpto.n2{
+
+        background: blue !important;
+        transition: background-color 0.5s ease;
+    }
+.xpto.n2:hover {
+background: #f0f !important;
+transition: background-color 0.5s ease;
+}
+
+
+#obj1{width: 100px;height: 50px;}
+#obj2{width:  200px;height: 20px;}
+#obj3{width:  500px;height: 200px;}
+#obj1,#obj2,#obj3{border: 1px solid #ccc;float: right;}
+
+.areautil{width: 1000px;margin: 10px auto;}
+.zonalogo{width: 200px;margin: 0 auto;}
+.zonamenu{width:100%;border:1px solid #f00;}
+.menuOps{width:33%;float: left;text-align: center;}
+
+
+
+
+
+.caixaMae {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.caixa {
+    width: 100%;
+    height: 100px;
+    border: 2px solid #3498db; /* Cor da borda azul clara */
+    text-align: center;
+    line-height: 100px;
+    font-size: 36px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 10px; /* Bordas arredondadas */
+}
+
+/* Estilizar cada caixa individualmente */
+.caixa.n1 { background-color: #e74c3c; } /* Cor de fundo vermelha para caixa 1 */
+.caixa.n2 { background-color: #2ecc71; } /* Cor de fundo verde para caixa 2 */
+.caixa.n3 { background-color: #f39c12; } /* Cor de fundo laranja para caixa 3 */
+.caixa.n4 { background-color: #9b59b6; } /* Cor de fundo roxa para caixa 4 */
+.caixa.n5 { background-color: #34495e; } /* Cor de fundo azul escuro para caixa 5 */
+.caixa.n6 { background-color: #e67e22; } /* Cor de fundo laranja claro para caixa 6 */
+.caixa.n7 { background-color: #1abc9c; } /* Cor de fundo verde água para caixa 7 */
+.caixa.n8 { background-color: #f1c40f; } /* Cor de fundo amarela para caixa 8 */
+.caixa.n9 { background-color: #3498db; } /* Cor de fundo azul clara para caixa 9 */
+
+/* Efeito de hover para destacar a caixa ao passar o rato */
+.caixa:hover {
+    background-color: #eee;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra sutil ao clicar */
+}
+

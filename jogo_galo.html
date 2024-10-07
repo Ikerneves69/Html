@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt"> 
+<head>  <META CHARSET="UTF-8"/>
+    <title> Jogo do galo</title>
+    <fontprogramação rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="css/style2.css">
+    
+   
+</head>
+<body>
+    <div class="game-container">
+        <h1>Jogo do Galo</h1>
+        <div id="board"></div>
+        <div id="result"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const board = $("#board");
+            const result = $("#result");
+            let currentPlayer = 'X';
+            let gameBoard = [
+                ['', '', ''],
+                ['', '', ''],
+                ['', '', '']
+            ];
+
+            // Inicializar o tabuleiro
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    board.append(`<div class="cell" data-row="${i}" data-col="${j}"></div>`);
+                }
+            }
+
+            // Adicionar evento de clique nas células
+            $(".cell").on("click", function () {
+                const row = $(this).data("row");
+                const col = $(this).data("col");
+
+                if (gameBoard[row][col] === '') {
+                    // Marcar a célula com 'X' ou 'O' alternadamente
+                    gameBoard[row][col] = currentPlayer;
+                    $(this).text(currentPlayer);
+
+                    // Verificar se há um vencedor
+                    if (checkWinner()) {
+                        result.text(`Jogador ${currentPlayer} venceu!`);
+                        $(".cell").off("click"); // Desabilitar cliques após o jogo terminar
+                    } else if (isBoardFull()) {
+                        result.text('Empate!');
+                    } else {
+                        // Alternar o jogador
+                        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                    }
+                }
+            });
+
+            function checkWinner() {
+                // Verificar linhas, colunas e diagonais
+                for (let i = 0; i < 3; i++) {
+                    if (
+                        (gameBoard[i][0] === currentPlayer && gameBoard[i][1] === currentPlayer && gameBoard[i][2] === currentPlayer) ||
+                        (gameBoard[0][i] === currentPlayer && gameBoard[1][i] === currentPlayer && gameBoard[2][i] === currentPlayer)
+                    ) {
+                        return true;
+                    }
+                }
+
+                if (
+                    (gameBoard[0][0] === currentPlayer && gameBoard[1][1] === currentPlayer && gameBoard[2][2] === currentPlayer) ||
+                    (gameBoard[0][2] === currentPlayer && gameBoard[1][1] === currentPlayer && gameBoard[2][0] === currentPlayer)
+                ) {
+                    return true;
+                }
+
+                return false;
+            }
+
+            function isBoardFull() {
+                // Verificar se todas as células estão preenchidas
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        if (gameBoard[i][j] === '') {
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+        });
+    </script>
+</body>
+</html>
